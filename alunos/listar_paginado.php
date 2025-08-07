@@ -3,7 +3,7 @@
 require_once 'conexao_pdo.php';
 
 // 1. Definir os parâmetros da paginação
-$itens_por_pagina = 3; // Quantos itens você quer exibir por página
+$itens_por_pagina = 5; // Quantos itens você quer exibir por página
 
 // Pega o número da página da URL, ou assume a página 1 se não for fornecido
 // Usamos filter_input para segurança e para garantir que seja um inteiro
@@ -20,6 +20,19 @@ $total_itens = $total_itens_stmt->fetchColumn();
 
 // Calcula o total de páginas necessárias, arredondando para cima
 $total_paginas = ceil($total_itens / $itens_por_pagina);
+
+// Valida a página atual para garantir que ela esteja dentro do intervalo válido
+if ($pagina_atual > $total_paginas && $total_paginas > 0) {
+    // Se a página solicitada for maior que o total, redireciona para a última página
+    header("Location: ?page=" . $total_paginas);
+    exit; // Encerra o script para o redirecionamento ocorrer
+}
+if ($pagina_atual < 1) {
+    // Se a página solicitada for menor que 1, redireciona para a primeira página
+    header("Location: ?page=1");
+    exit;
+}
+
 // 3. Calcular o offset (deslocamento) para a consulta SQL
 $offset = ($pagina_atual - 1) * $itens_por_pagina;
 // 4. Buscar os registros para a página atual usando LIMIT e OFFSET
@@ -88,21 +101,40 @@ $alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tbody>
         </table>
         <div class="pagination">
-            <?php if ($pagina_atual > 1): ?>
-                <a href="?page=<?= $pagina_atual - 1 ?>">Anterior</a>
-            <?php endif; ?>
+            <?php
+            $janela_de_links = 2; // Quantos links queremos mostrar antes e depois da página atual
+            // Link "Primeira"
+            if ($pagina_atual > 1) {
+                echo '<a href="?page=1">Primeira</a>';
+            }
 
-            <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
-                <?php if ($i == $pagina_atual): ?>
-                    <span class="current-page"><?= $i ?></span>
-                <?php else: ?>
-                    <a href="?page=<?= $i ?>"><?= $i ?></a>
-                <?php endif; ?>
-            <?php endfor; ?>
+            // Link "Anterior"
+            if ($pagina_atual > 1) {
+                echo '<a href="?page=' . ($pagina_atual - 1) . '">Anterior</a>';
+            }
 
-            <?php if ($pagina_atual < $total_paginas): ?>
-                <a href="?page=<?= $pagina_atual + 1 ?>">Próxima</a>
-            <?php endif; ?>
+            // Links do meio (a janela de navegação)
+            for ($i = $pagina_atual - $janela_de_links; $i <= $pagina_atual + $janela_de_links; $i++) {
+                if ($i >= 1 && $i <= $total_paginas) {
+                    if ($i == $pagina_atual) {
+                        echo '<span class="current-page">' . $i . '</span>';
+                    } else {
+                        echo '<a href="?page=' . $i . '">' . $i . '</a>';
+                    }
+                }
+            }
+
+            // Link "Próxima"
+            if ($pagina_atual < $total_paginas) {
+                echo '<a href="?page=' . ($pagina_atual + 1) . '">Próxima</a>';
+            }
+
+            // Link "Última"
+
+            if ($pagina_atual < $total_paginas) {
+                echo '<a href="?page=' . $total_paginas . '">Última</a>';
+            }
+            ?>
         </div>
 
     <?php else: ?>
