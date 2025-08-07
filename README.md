@@ -24,3 +24,10 @@ O brach main terá a aplicação completa, enquanto os branches Aula1, Aula2, Au
 - Calcular o total de itens e o total de páginas
 - Calcular o OFFSET e Buscar os Dados da Página Atual
 - Exibir os Dados e os Links de Paginação
+
+## Aula4
+- Validação de Página Robusta
+- Melhorias na Interface (Links de Paginação Inteligentes)
+- Paginação com AJAX (A Experiência Moderna)
+- Criando a API PHP (api_buscar_alunos.php)
+- Ajustando o Frontend (listar_paginado_ajax.php)
