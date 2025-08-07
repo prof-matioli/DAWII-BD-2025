@@ -7,7 +7,7 @@ O brach main terá a aplicação completa, enquanto os branches Aula1, Aula2, Au
 
 ## Aula1
 - Criando a estrutura do banco de dados
-- Estabelecendo conexão
+- Estabelecendo conexão com MySQLi
 - Inserindo novos registros na tabela
 - Listando os registros de uma tabela
 - Prevenindo SQL Injection com Prepared Statements
