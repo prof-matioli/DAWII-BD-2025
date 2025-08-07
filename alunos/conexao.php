@@ -2,10 +2,9 @@
     // conexao.php
     // 1. Definição dos parâmetros de conexão
     $servidor = "localhost"; // Endereço do servidor do banco de dados
-    $servidor = "143.106.241.4"; // Endereço do servidor do banco de dados
-    $usuario = "matioli"; // Usuário do banco de dados
-    $senha = "matnaolhe"; // Senha do usuário (vazia no XAMPP padrão)
-    $nomeBanco = "matioli"; // Nome do banco de dados que vamos usar
+    $usuario = "root"; // Usuário do banco de dados
+    $senha = ""; // Senha do usuário (vazia no XAMPP padrão)
+    $nomeBanco = "meubanco"; // Nome do banco de dados que vamos usar
     // 2. Criação da conexão usando a classe MySQLi
     // O '@' antes de new mysqli suprime mensagens de erro padrão do PHP,
     // permitindo que nós mesmos tratemos o erro de forma personalizada

@@ -11,3 +11,9 @@ O brach main terá a aplicação completa, enquanto os branches Aula1, Aula2, Au
 - Inserindo novos registros na tabela
 - Listando os registros de uma tabela
 - Prevenindo SQL Injection com Prepared Statements
+
+## Aula2
+- O Padrão Moderno - Conectando com PDO
+- Estabelecendo conexão com PDO
+- Inserindo novos registros com PDO
+- Listando os registros com PDO
