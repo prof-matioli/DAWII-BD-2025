@@ -17,3 +17,10 @@ O brach main terá a aplicação completa, enquanto os branches Aula1, Aula2, Au
 - Estabelecendo conexão com PDO
 - Inserindo novos registros com PDO
 - Listando os registros com PDO
+
+## Aula3
+- Paginação de dados com PHP e MySql
+- Conexão e definição das variáveis iniciais
+- Calcular o total de itens e o total de páginas
+- Calcular o OFFSET e Buscar os Dados da Página Atual
+- Exibir os Dados e os Links de Paginação
