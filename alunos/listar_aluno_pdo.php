@@ -26,3 +26,6 @@ try {
 } catch (PDOException $e) {
     die("Erro ao consultar os dados: " . $e->getMessage());
 }
+
+echo "<p><a href='form_cadastro.html'>Cadastrar novo aluno</a></p>";
+

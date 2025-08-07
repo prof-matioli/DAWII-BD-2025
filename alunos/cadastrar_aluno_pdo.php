@@ -30,6 +30,7 @@ try {
     if ($stmt->execute($parametros)) {
         echo "<h1>Aluno cadastrado com sucesso usando PDO!</h1>";
         echo "<p><a href='form_cadastro.html'>Cadastrar outro</a></p>";
+        echo "<p><a href='listar_aluno_pdo.php'>Listar alunos cadastrados</a></p>";
     } else {
         // Este 'else' raramente será atingido com o modo de exceção ativado,
         // pois um erro na execução lançaria uma PDOException.
